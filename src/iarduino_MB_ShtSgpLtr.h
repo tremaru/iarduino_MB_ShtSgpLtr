@@ -17,22 +17,22 @@
 #include <WProgram.h>
 #endif
 
-#include <iarduino_Modbus.h>													//	Подключаем файл iarduino_Modbus.h - для работы по протоколу Modbus.
+	#include <iarduino_Modbus.h>												//	Подключаем файл iarduino_Modbus.h - для работы по протоколу Modbus.
 																				//
-#define DEF_MODEL_SHT_LTR				5										//	Идентификатор модели (2 датчика SHT,    LTR) - константа.
-#define DEF_MODEL_SHT_SGP_LTR			6										//	Идентификатор модели (3 датчика SHT,SGP,LTR) - константа.
+	#define DEF_MODEL_SHT_LTR				5									//	Идентификатор модели (2 датчика SHT,    LTR) - константа.
+	#define DEF_MODEL_SHT_SGP_LTR			6									//	Идентификатор модели (3 датчика SHT,SGP,LTR) - константа.
 																				//
-#define SENSOR_ALL						0										//	Аргумент функций checkSensor(), setPeriod(), getPeriod() - все датчики.
-#define SENSOR_SHT						1										//	Аргумент функций checkSensor(), setPeriod(), getPeriod() - датчик температуры и влажности.
-#define SENSOR_SGP						2										//	Аргумент функций checkSensor(), setPeriod(), getPeriod() - датчик углекислого газа.
-#define SENSOR_LTR						3										//	Аргумент функций checkSensor(), setPeriod(), getPeriod() - датчик освещенности.
+	#define SENSOR_ALL						0									//	Аргумент функций checkSensor(), setPeriod(), getPeriod() - все датчики.
+	#define SENSOR_SHT						1									//	Аргумент функций checkSensor(), setPeriod(), getPeriod() - датчик температуры и влажности.
+//	#define SENSOR_SGP						2									//	Аргумент функций checkSensor(), setPeriod(), getPeriod() - датчик углекислого газа.
+	#define SENSOR_LTR						3									//	Аргумент функций checkSensor(), setPeriod(), getPeriod() - датчик освещенности.
 																				//
-#define ERROR_SHT_INIT					0b00000001								//	Ошибка возвращаемая функцией checkSensor() - ошибка инициализации датчика влажности и температуры SHT20.
-#define ERROR_SHT_DATA					0b00000010								//	Ошибка возвращаемая функцией checkSensor() - ошибка чтения данных датчика влажности и температуры SHT20.
-#define ERROR_SGP_INIT					0b00000100								//	Ошибка возвращаемая функцией checkSensor() - ошибка инициализации датчика углекислого газа SGP30.
-#define ERROR_SGP_DATA					0b00001000								//	Ошибка возвращаемая функцией checkSensor() - ошибка чтения данных датчика углекислого газа SGP30.
-#define ERROR_LTR_INIT					0b00010000								//	Ошибка возвращаемая функцией checkSensor() - ошибка инициализации датчика освещенности и приближения LTR-553ALS-01.
-#define ERROR_LTR_DATA					0b00100000								//	Ошибка возвращаемая функцией checkSensor() - ошибка чтения данных датчика освещенности и приближения LTR-553ALS-01.
+	#define ERROR_SHT_INIT					0b00000001							//	Ошибка возвращаемая функцией checkSensor() - ошибка инициализации датчика влажности и температуры SHT20.
+	#define ERROR_SHT_DATA					0b00000010							//	Ошибка возвращаемая функцией checkSensor() - ошибка чтения данных датчика влажности и температуры SHT20.
+//	#define ERROR_SGP_INIT					0b00000100							//	Ошибка возвращаемая функцией checkSensor() - ошибка инициализации датчика углекислого газа SGP30.
+//	#define ERROR_SGP_DATA					0b00001000							//	Ошибка возвращаемая функцией checkSensor() - ошибка чтения данных датчика углекислого газа SGP30.
+	#define ERROR_LTR_INIT					0b00010000							//	Ошибка возвращаемая функцией checkSensor() - ошибка инициализации датчика освещенности и приближения LTR-553ALS-01.
+	#define ERROR_LTR_DATA					0b00100000							//	Ошибка возвращаемая функцией checkSensor() - ошибка чтения данных датчика освещенности и приближения LTR-553ALS-01.
 																				//
 class iarduino_MB_ShtSgpLtr{													//
 	public:																		//
